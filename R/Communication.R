@@ -1,12 +1,12 @@
 #' ComScores: calculate communication scores
-#'
 #' @param Seurat a Seurat object
 #' @param idents a vector containing the list of idents to calculate communication scores, default is levels(Seurat)
+#' @param database the cellchat database or any other CCC database containing a set of LR pairs
 #' @return A list of dataframes including communication scores for each LR pair and interaction
 #' @import Seurat stringr reshape2
 #' @export
 
-ComScores <- function(Seurat, idents = levels(Seurat)) {
+ComScores <- function(Seurat, idents = levels(Seurat), database) {
   # Prepare interactions:
     Interactions <- c()
     for (i in 1:length(idents)){
@@ -14,14 +14,13 @@ ComScores <- function(Seurat, idents = levels(Seurat)) {
       Int <- paste0(Int1,"-",Int2)
       Interactions <- c(Interactions, Int)}
   # Load database:
-    Database <- read.csv("E:/1_scRNAseqLABO/Tensor_our_data/DB_CellChat.csv", row.names = 1)
-    Database <- cbind(Database, setNames(rep(list(""), length(Interactions)), c(Interactions)))
-    for (i in 4:ncol(Database)){Database[i] <- colnames(Database)[i]}
+    database <- cbind(database, setNames(rep(list(""), length(Interactions)), c(Interactions)))
+    for (i in 4:ncol(database)){database[i] <- colnames(database)[i]}
   # Calculate Cell-cell communication scores based on LR products:
     CCC <- list()
     for (i in 1:length(Interactions)){
       print(Interactions[i])
-      CS <- Database[,c(1,2,3,grep(Interactions[i], colnames(Database)))]
+      CS <- database[,c(1,2,3,grep(Interactions[i], colnames(database)))]
       colnames(CS)[4] <- 'Interaction'
       CS$Cell1 <- str_split(CS$LR, "-", simplify = TRUE)[, 1]
       CS$Cell2 <- str_split(CS$LR, "-", simplify = TRUE)[, 2]
@@ -51,11 +50,12 @@ ComScores <- function(Seurat, idents = levels(Seurat)) {
 #' @param idents a vector containing the list of idents to calculate communication scores, default is levels(Seurat)
 #' @param conditions string, specify column in seurat meta.data containing the conditions
 #' @param cell_type  string, specify column in seurat meta.data containing the idents
+#' @param database the cellchat database or any other CCC database containing a set of LR pairs
 #' @return A list of dataframes including communication scores for each LR pair and interaction
 #' @import Seurat stringr reshape2
 #' @export
 
-DifComScores <- function(seurat, idents = levels(seurat), conditions, cell_type) {
+DifComScores <- function(seurat, idents = levels(seurat), conditions, cell_type, database) {
     # Prepare interactions:
       Interactions <- c()
       for (a in 1:length(idents)){
@@ -63,14 +63,13 @@ DifComScores <- function(seurat, idents = levels(seurat), conditions, cell_type)
         Int <- paste0(Int1,"-",Int2)
         Interactions <- c(Interactions, Int)}
     # Load database:
-      Database <- read.csv("E:/1_scRNAseqLABO/Tensor_our_data/DB_CellChat.csv", row.names = 1)
-      Database <- cbind(Database, setNames(rep(list(""), length(Interactions)), c(Interactions)))
-      for (u in 4:ncol(Database)){Database[u] <- colnames(Database)[u]}
+      database <- cbind(database, setNames(rep(list(""), length(Interactions)), c(Interactions)))
+      for (u in 4:ncol(database)){database[u] <- colnames(database)[u]}
     # Calculate Cell-cell communication scores based on LR products:
       CCC <- list()
       for (i in 1:length(Interactions)){
         print(Interactions[i])
-        CS <- Database[,c(1,2,3,grep(Interactions[i], colnames(Database)))]
+        CS <- database[,c(1,2,3,grep(Interactions[i], colnames(database)))]
         colnames(CS)[4] <- 'Interaction'
         CS$Cell1 <- str_split(CS$LR, "-", simplify = TRUE)[, 1]
         CS$Cell2 <- str_split(CS$LR, "-", simplify = TRUE)[, 2]
