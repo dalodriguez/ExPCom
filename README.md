@@ -5,6 +5,7 @@ This package provides blablabla for cell-cell communnication
 test2 can be installed with:
 ```
 devtools::install_github("dalodriguez/test2")
+library(Testing)
 ```
 
 
