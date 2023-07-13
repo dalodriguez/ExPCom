@@ -6,7 +6,6 @@
 #' @import Seurat stringr reshape2
 #' @export
 
-
 ComScores <- function(Seurat, idents = levels(Seurat)) {
   # Prepare interactions:
     Interactions <- c()
@@ -56,7 +55,6 @@ ComScores <- function(Seurat, idents = levels(Seurat)) {
 #' @import Seurat stringr reshape2
 #' @export
 
-
 DifComScores <- function(seurat, idents = levels(seurat), conditions, cell_type) {
     # Prepare interactions:
       Interactions <- c()
@@ -105,17 +103,6 @@ DifComScores <- function(seurat, idents = levels(seurat), conditions, cell_type)
     names(CCC) <- Interactions
     return(CCC)
 }
-
-
-
-
-seurat = Int_Maxime
-conditions = "condition"
-seurat$cell_type <- Idents(seurat)
-cell_type= "cell_type"
-
-A <- DifComScores(seurat, idents = levels(seurat)[1:3], conditions= conditions, cell_type= cell_type)
-
 
 
 
