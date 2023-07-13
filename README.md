@@ -7,7 +7,7 @@ This package provides a tool to infer cell-cell communnication using a scRNAseq 
 </p>
 
 
-### Installation 
+## Installation 
 TanyCom requires to have installed the package devtools, Seurat, stringr and reshape2. 
 ```
 if (!requireNamespace("BiocManager", quietly = TRUE))
@@ -21,7 +21,7 @@ devtools::install_github("dalodriguez/TanyCom")
 library(TanyCom)
 ```
 
-### Examples
+## Examples
 <ul>
   <li><b>Calculating CCC in a dataset with a single condition</b></li>
 </ul>
@@ -79,10 +79,10 @@ CCC <- DifComScores(seurat_object, conditions= conditions, cell_type = cell_type
 ```
 
 
-### Suggestions and contributions 
+## Suggestions and contributions 
 Please use github issue tracker to report coding related issues or contact us directly, https://dalodriguez.github.io/Contact/
 
-### How to cite?
+## How to cite?
 M. Brunner, D. Lopez-Rodriguez, A. Messina, B. Thorens, F Santoni, F. Langlet. Pseudospatial transcriptional gradient analysis of hypothalamic ependymal cells: towards a new tanycyte classification. BioRxiv preprint. https://doi.org/10.1101/2023.07.06.547914
 
 https://www.biorxiv.org/content/10.1101/2023.07.06.547914v1
