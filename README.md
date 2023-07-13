@@ -40,6 +40,16 @@ The database may be a dataframe containing three columns and as many rows as LR 
     <td>Kiss1r</td>
     <td>Kiss1-Kiss1r</td>
   </tr>
+    <tr>
+    <td>...</td>
+    <td>...</td>
+    <td>...</td>
+  </tr>
+    <tr>
+    <td>Lig</td>
+    <td>Rec</td>
+    <td>Lig-Recr</td>
+  </tr>
 </table>
 
 The ComScores() function return a list cotainning as many dataframes as cell-cell comparisons (e.g. tanycyte-neurons). 
