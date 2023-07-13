@@ -15,7 +15,8 @@ library(Testing)
 
 In this example, we'll calculate CCC in a single condition
 ```
-CCC <- ComScores(seurat)
+database= path_to_database
+CCC <- ComScores(seurat_object, database)
 
 ```
 
@@ -25,7 +26,8 @@ In this example, we'll calculate CCC in several conditions
 
 conditions = "condition"
 cell_type= "cell_type"
+database= path_to_database
 
-CCC <- DifComScores(seurat, conditions= conditions, cell_type = cell_type)
+CCC <- DifComScores(seurat_object, conditions= conditions, cell_type = cell_type)
 
 ```
