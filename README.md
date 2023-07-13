@@ -21,8 +21,10 @@ library(TanyCom)
 ```
 
 ### Examples
+<ul>
+  <li><b>Calculating CCC in a dataset with a single condition</b></li>
+</ul>
 
-**Calculating CCC in a dataset with a single condition**  
 
 Combined scores can be calculated in a single condition using the ComScores() function. ComScores uses all idents of a seurat object by default but can be replaced by a subset of idents by providing them to the function. Please use the DB_CellChat.csv database file that can be uploaded from github or any other custom database. 
 
@@ -58,8 +60,9 @@ database= path_to_database
 CCC <- ComScores(seurat_object,  idents= levels(seurat_object), database)
 
 ```
-
-**Calculating CCC in a dataset with several conditions**  
+<ul>
+  <li><b>Calculating CCC in a dataset with several conditions</b></li>
+</ul>
 
 By using an integrated seurat object containing two or more conditions, we can calculate communication scores for each condition and infer the dynamics of cell-cell communication using the DifComScores() function.
 
