@@ -48,7 +48,7 @@ The database may be a dataframe containing three columns and as many rows as LR 
     <tr>
     <td>Lig</td>
     <td>Rec</td>
-    <td>Lig-Recr</td>
+    <td>Lig-Rec</td>
   </tr>
 </table>
 
