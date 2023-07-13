@@ -57,7 +57,8 @@ The database may be a dataframe containing three columns and as many rows as LR 
 
 The ComScores() function return a list cotainning as many dataframes as cell-cell comparisons (e.g. tanycyte-neurons). 
 ```
-database= path_to_database
+database = path_to_database
+
 CCC <- ComScores(seurat_object,  idents= levels(seurat_object), database)
 
 ```
@@ -71,8 +72,8 @@ The DifComScores() function requires to define the name of the seurat_object met
 
 ```
 conditions = "condition"
-cell_type= "cell_type"
-database= path_to_database
+cell_type = "cell_type"
+database = path_to_database
 
 CCC <- DifComScores(seurat_object, conditions= conditions, cell_type = cell_type)
 ```
