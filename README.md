@@ -1,5 +1,5 @@
 # TanyCom
-This package provides a tool to infer cell-cell communnication. The function calculate communication scores for a any set of ligand-receptor pairs (e.g. CellChat Database) based on expression product. The L*R expression product method allows to obtain a continuous value by multiplying all possible combinations of the expression of both interacting molecules between two cell types.
+This package provides a tool to infer cell-cell communnication. The function calculate communication scores for a any set of ligand-receptor pairs (e.g. CellChat Database) based on expression product. The L*R expression product method allows to obtain a continuous value by multiplying all possible combinations of the expression of both interacting molecules between two given cell types.
 
 <p align="center">
   <img width="800"  src="TanyCom.png">
