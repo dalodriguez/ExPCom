@@ -72,3 +72,14 @@ database= path_to_database
 
 CCC <- DifComScores(seurat_object, conditions= conditions, cell_type = cell_type)
 ```
+
+
+### Suggestions and contributions 
+Please use github issue tracker to report coding related issues or contact us directly, https://dalodriguez.github.io/Contact/
+
+### How to cite?
+M. Brunner, D. Lopez-Rodriguez, A. Messina, B. Thorens, F Santoni, F. Langlet. Pseudospatial transcriptional gradient analysis of hypothalamic ependymal cells: towards a new tanycyte classification. BioRxiv preprint. https://doi.org/10.1101/2023.07.06.547914
+
+https://www.biorxiv.org/content/10.1101/2023.07.06.547914v1
+
+
