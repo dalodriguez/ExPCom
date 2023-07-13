@@ -67,7 +67,7 @@ CCC <- ComScores(seurat_object,  idents= levels(seurat_object), database)
 
 By using an integrated seurat object containing two or more conditions, we can calculate communication scores for each condition and infer the dynamics of cell-cell communication using the DifComScores() function.
 
-The DifComScores() function requires to define the name of the 'seurat_object@meta.data' column containing the conditions and cell types. As bellow, the database and the name of the idents to be included can be reduced if required. 
+The DifComScores() function requires to define the name of the seurat_object meta.data column containing the conditions and cell types. As bellow, the database and the name of the idents to be included can be reduced if required. 
 
 ```
 conditions = "condition"
