@@ -79,6 +79,17 @@ CCC <- DifComScores(seurat_object, conditions= conditions, cell_type = cell_type
 ```
 
 
+
+
+## Visualization
+The results the DifComScores() function can be used to evaluate the differences of communication between conditions by calculating the delta of communication scores obtained or by looking at the dynamics of cell-cell communication. 
+
+<p align="center">
+  <img width="800"  src="CCC.png">
+  <center>Example of the dynamics of cell-cell commuication</center>
+</p>
+
+
 ## Suggestions and contributions 
 Please use github issue tracker to report coding related issues or contact us directly, https://dalodriguez.github.io/Contact/
 
