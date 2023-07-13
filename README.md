@@ -30,22 +30,17 @@ The database may be a dataframe containing three columns and as many rows as LR 
 
 <table>
   <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
+    <th>Ligand</th>
+    <th>Receptor</th>
+    <th>LR</th>
   </tr>
   <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
+    <td>Kiss1</td>
+    <td>Kiss1r</td>
+    <td>Kiss1-Kiss1r</td>
   </tr>
 </table>
 
-
-
-
-Ligand | Receptor | LR 
-Kiss1  |  Kiss1r  | Kiss1-Kiss1r
 
 The ComScores() function return a list cotainning as many dataframes as cell-cell comparisons (e.g. tanycyte-neurons). 
 ```
