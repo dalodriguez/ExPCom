@@ -6,7 +6,8 @@
 #' @import Seurat stringr reshape2
 #' @export
 
-ComScores <- function(Seurat, idents = levels(Seurat), database) {
+
+ComScores <- function(Seurat, idents = levels(Seurat), database = read.csv("DB_CellChat.csv", row.names = 1)) {
   # Prepare interactions:
     Interactions <- c()
     for (i in 1:length(idents)){
@@ -55,7 +56,7 @@ ComScores <- function(Seurat, idents = levels(Seurat), database) {
 #' @import Seurat stringr reshape2
 #' @export
 
-DifComScores <- function(seurat, idents = levels(seurat), conditions, cell_type, database) {
+DifComScores <- function(seurat, idents = levels(seurat), conditions, cell_type, database = read.csv("DB_CellChat.csv", row.names = 1)) {
     # Prepare interactions:
       Interactions <- c()
       for (a in 1:length(idents)){
