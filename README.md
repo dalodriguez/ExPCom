@@ -27,6 +27,11 @@ library(TanyCom)
 Combined scores can be calculated in a single condition using the ComScores() function. ComScores uses all idents of a seurat object by default but can be replaced by a subset of idents by providing them to the function. Please use the DB_CellChat.csv database file that can be uploaded from github or any other custom database. 
 
 The database may be a dataframe containing three columns and as many rows as LR pairs, as in the following example: 
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 <table class="center">
   <tr>
     <th>Ligand</th>
