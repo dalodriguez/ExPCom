@@ -4,7 +4,13 @@
 \alias{DifComScores}
 \title{DifComScores: calculate communication scores for each condition in a Seurat Object}
 \usage{
-DifComScores(seurat, idents = levels(seurat), conditions, cell_type)
+DifComScores(
+  seurat,
+  idents = levels(seurat),
+  conditions,
+  cell_type,
+  database = read.csv("DB_CellChat.csv", row.names = 1)
+)
 }
 \arguments{
 \item{idents}{a vector containing the list of idents to calculate communication scores, default is levels(Seurat)}
@@ -12,6 +18,8 @@ DifComScores(seurat, idents = levels(seurat), conditions, cell_type)
 \item{conditions}{string, specify column in seurat meta.data containing the conditions}
 
 \item{cell_type}{string, specify column in seurat meta.data containing the idents}
+
+\item{database}{the cellchat database or any other CCC database containing a set of LR pairs}
 
 \item{Seurat}{a Seurat object}
 }

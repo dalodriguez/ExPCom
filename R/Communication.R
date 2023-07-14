@@ -7,6 +7,7 @@
 #' @export
 
 
+
 ComScores <- function(Seurat, idents = levels(Seurat), database = read.csv("DB_CellChat.csv", row.names = 1)) {
   # Prepare interactions:
     Interactions <- c()
@@ -53,7 +54,7 @@ ComScores <- function(Seurat, idents = levels(Seurat), database = read.csv("DB_C
 #' @param cell_type  string, specify column in seurat meta.data containing the idents
 #' @param database the cellchat database or any other CCC database containing a set of LR pairs
 #' @return A list of dataframes including communication scores for each LR pair and interaction
-#' @import Seurat stringr reshape2
+#' @import Seurat stringr reshape2 multcomp
 #' @export
 
 DifComScores <- function(seurat, idents = levels(seurat), conditions, cell_type, database = read.csv("DB_CellChat.csv", row.names = 1)) {
@@ -81,10 +82,11 @@ DifComScores <- function(seurat, idents = levels(seurat), conditions, cell_type,
         for(c in 1:length(cond)){
           CS[, ncol(CS) + 1] <- NA
           names(CS)[ncol(CS)] <- paste0("ComScore_", cond[c])}
+        ExpProd <- data.frame()  #
         for (t in 1:length(cond)){
           Idents(seurat) <- seurat@meta.data[,position]
           seurat_sub <- subset(seurat, idents = cond[t])
-            for (k in 1:5){ #nrow(CS) FOR TESTING 1:20
+            for (k in 1:5){ #nrow(CS)
               tryCatch({
                   ct_pos = which(colnames(seurat_sub@meta.data)==cell_type)
                   Idents(seurat_sub) <- seurat_sub@meta.data[,ct_pos]
@@ -95,13 +97,37 @@ DifComScores <- function(seurat, idents = levels(seurat), conditions, cell_type,
                   LR <- outer(expr1[,1], expr2[,1], FUN = "*")
                   pos <- which(colnames(CS)== paste0("ComScore_", cond[t]))
                   CS[k,pos] <- mean(LR)
+
+                  LR <- na.omit(melt(LR)) #
+                  LR$cond <- cond[t]      #
+                  LR <- LR[,3:4]          #
+                  ExpProd <- rbind(ExpProd,LR) #
+
                     }, error = function(e) {} )}
                   }
-                CCC[[i]] <- CS
-                }
 
-    names(CCC) <- Interactions
-    return(CCC)
+
+                if ( length(unique(ExpProd$cond)) == length(cond)){ #
+                  ExpProd$cond <- factor(ExpProd$cond) #
+                  res.aov <- aov(value ~ cond, data = ExpProd)  ; res2 <- summary(res.aov) #
+                  if (res2[[1]][["Pr(>F)"]][1] > 0.05 | res2[[1]][["Pr(>F)"]][1] == "NaN"  ){ } #
+                  else { #
+
+                    for (h in length(post_test[["test"]]$tstat)){
+
+
+                    }
+
+
+                    post_test <-summary(glht(res.aov, linfct = mcp(cond = "Tukey"))) #
+                    CS$FvsF12_pvalue[t] <- post_test[["test"]][["pvalues"]][1] #
+                    CS$FvsF24_pvalue[t] <- post_test[["test"]][["pvalues"]][2] #
+                    CS$F12vsF24_pvalue[t] <- post_test[["test"]][["pvalues"]][3]} #
+                  }
+        CCC[[i]] <- CS
+        }
+      names(CCC) <- Interactions
+      return(CCC)
 }
 
 

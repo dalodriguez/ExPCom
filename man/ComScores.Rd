@@ -4,12 +4,18 @@
 \alias{ComScores}
 \title{ComScores: calculate communication scores}
 \usage{
-ComScores(Seurat, idents = levels(Seurat))
+ComScores(
+  Seurat,
+  idents = levels(Seurat),
+  database = read.csv("DB_CellChat.csv", row.names = 1)
+)
 }
 \arguments{
 \item{Seurat}{a Seurat object}
 
 \item{idents}{a vector containing the list of idents to calculate communication scores, default is levels(Seurat)}
+
+\item{database}{the cellchat database or any other CCC database containing a set of LR pairs}
 }
 \value{
 A list of dataframes including communication scores for each LR pair and interaction
