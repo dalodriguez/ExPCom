@@ -2,7 +2,7 @@
 This package provides a tool to infer cell-cell communnication using a scRNAseq dataset. The function calculate communication scores for a any set of ligand-receptor pairs (e.g. CellChat Database) based on expression product. The L*R expression product method allows to obtain a continuous value by multiplying all possible combinations of the expression of both interacting molecules between two given cell types.
 
 <p align="center">
-  <img width="800"  src="TanyCom.png">
+  <img width="1100"  src="TanyCom.png">
   <center>Illustrative picture of the original workflow used in https://www.biorxiv.org/content/10.1101/2023.07.06.547914v1</center>
 </p>
 
@@ -77,6 +77,17 @@ database = path_to_database
 
 CCC <- DifComScores(seurat_object, conditions= conditions, cell_type = cell_type)
 ```
+
+
+
+
+## Visualization
+The results the DifComScores() function can be used to evaluate the differences of communication between conditions by calculating the delta of communication scores obtained or by looking at the dynamics of cell-cell communication. 
+
+<p align="center">
+  <img width="800"  src="CCC.png">
+  <center>Example of the dynamics of cell-cell commuication</center>
+</p>
 
 
 ## Suggestions and contributions 
