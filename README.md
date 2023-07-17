@@ -1,4 +1,4 @@
-# TanyCom
+# ExPCom
 This package provides a tool to infer cell-cell communnication using a scRNAseq dataset. The function calculate communication scores for a any set of ligand-receptor pairs (e.g. CellChat Database) based on expression product. The L*R expression product method allows to obtain a continuous value by multiplying all possible combinations of the expression of both interacting molecules between two given cell types.
 
 <p align="center">
@@ -8,7 +8,7 @@ This package provides a tool to infer cell-cell communnication using a scRNAseq 
 
 
 ## Installation 
-TanyCom requires to have installed the package devtools, Seurat, stringr and reshape2. 
+ExPCom requires to have installed the package devtools, Seurat, stringr and reshape2. 
 ```
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
@@ -16,9 +16,9 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("devtools","Seurat", "stringr", "reshape2")
 library(devtools)
 
-devtools::install_github("dalodriguez/TanyCom")
+devtools::install_github("dalodriguez/ExPCom")
 
-library(TanyCom)
+library(ExPCom)
 ```
 
 ## Examples
