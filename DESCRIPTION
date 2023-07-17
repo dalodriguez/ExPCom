@@ -1,4 +1,4 @@
-Package: TanyCom
+Package: Init
 Type: Package
 Title: inference of cell-cell communication 
 Version: 0.1.0
