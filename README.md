@@ -8,12 +8,12 @@ This package provides a tool to infer cell-cell communnication using a scRNAseq 
 
 
 ## Installation 
-ExPCom requires to have installed the package devtools, Seurat, stringr and reshape2. 
+ExPCom requires to have installed the package devtools, Seurat, stringr, reshape2 & multcomp. 
 ```
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
-BiocManager::install("devtools","Seurat", "stringr", "reshape2")
+BiocManager::install("devtools","Seurat", "stringr", "reshape2", "multcomp")
 library(devtools)
 
 devtools::install_github("dalodriguez/ExPCom")
