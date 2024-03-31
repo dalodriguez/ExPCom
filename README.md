@@ -21,16 +21,12 @@ devtools::install_github("dalodriguez/ExPCom")
 library(ExPCom)
 ```
 
-## Examples
+## Example
 <ul>
   <li><b>Calculating CCC in a dataset with a single condition</b></li>
 </ul>
 
-
-Combined scores can be calculated in a single condition using the ComScores() function. ComScores uses all idents of a seurat object by default but can be replaced by a subset of idents by providing them to the function. Please use the DB_CellChat.csv database file that can be uploaded from github or any other custom database. 
-
-The database may be a dataframe containing three columns and as many rows as LR pairs, as in the following example: 
-
+Combined scores can be calculated in a single condition using the ComScores() function. The following arguments are required. (1) A SeuratObject: a sample dataset can be download from this github repository. The dataset is a downsample of the Brunner et al. (2024) paper. (2) The name of the metadata column containing the idents. (3) A database with ligand and receptor pairs. The database database.csv can also be found in the repository. Any custom database can be used as long as it is a dataframe with the following format: (4) a threshold, the minimum percentage of cells expressing the cells in source and target populations. Default is set to 0.
 
 <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
   <tr>
@@ -55,7 +51,7 @@ The database may be a dataframe containing three columns and as many rows as LR 
   </tr>
 </table>
 
-The ComScores() function return a list cotainning as many dataframes as cell-cell comparisons (e.g. tanycyte-neurons). 
+The ComScores() function returns a dataframe cotainning all possible cell-cell communication scores (e.g. tanycyte-neurons). 
 ```
 database = path_to_database
 
