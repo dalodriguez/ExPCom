@@ -2,30 +2,28 @@
 % Please edit documentation in R/Communication.R
 \name{DifComScores}
 \alias{DifComScores}
-\title{DifComScores: calculate communication scores for each condition in a Seurat Object}
+\title{DifComScores: perform differential communication analysis between each condition}
 \usage{
 DifComScores(
   seurat,
-  idents = levels(seurat),
-  conditions,
-  cell_type,
-  database = read.csv("DB_CellChat.csv", row.names = 1)
+  idents = "cell_type",
+  condition = "orig.ident",
+  CondComScores,
+  order = c("fed_int","fast12_int","fast24_int")
 )
 }
 \arguments{
-\item{idents}{a vector containing the list of idents to calculate communication scores, default is levels(Seurat)}
 
-\item{conditions}{string, specify column in seurat meta.data containing the conditions}
+\item{Seurat}{ a Seurat object}
+\item{idents}{ a vector containing the list of idents to calculate communication scores, default is levels(Seurat)}
+\item{conditions}{ string, specify column in seurat meta.data containing the conditions}
+\item{CondComScores}{ the output of the CondComScores function}
+\item{order}{ a vector, order of the conditions to be compared for the contrast}
 
-\item{cell_type}{string, specify column in seurat meta.data containing the idents}
-
-\item{database}{the cellchat database or any other CCC database containing a set of LR pairs}
-
-\item{Seurat}{a Seurat object}
 }
 \value{
-A list of dataframes including communication scores for each LR pair and interaction
+A dataframe 
 }
 \description{
-DifComScores: calculate communication scores for each condition in a Seurat Object
+DifComScores: perform differential communication analysis between each condition 
 }
