@@ -6,19 +6,19 @@
 \usage{
 ComScores(
   Seurat,
-  idents = levels(Seurat),
-  database = read.csv("DB_CellChat.csv", row.names = 1)
+  idents = "cell_type",
+  database = database,
+  threshold = 0
 )
 }
 \arguments{
 \item{Seurat}{a Seurat object}
-
-\item{idents}{a vector containing the list of idents to calculate communication scores, default is levels(Seurat)}
-
-\item{database}{the cellchat database or any other CCC database containing a set of LR pairs}
+\item{idents}{the name of the Seurat column metadata that contains the idents for which the communication will be calculated.}
+\item{database}{a dataframe with two columns containing ligand and receptors, default is the cellchat database.}
+\item{database}{minimum percentage of cells expressing the cells in source and target populations. Default is set to 0}
 }
 \value{
-A list of dataframes including communication scores for each LR pair and interaction
+A dataframe including communication scores for each LR pair and interaction
 }
 \description{
 ComScores: calculate communication scores
