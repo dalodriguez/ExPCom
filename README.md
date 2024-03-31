@@ -1,5 +1,5 @@
 # ExPCom
-This package provides a tool to infer cell-cell communnication using a scRNAseq dataset. The functions calculate communication scores for any set of ligand-receptor pairs (e.g. CellChat Database) based on expression product. The L*R expression product method allows to obtain a continuous value by multiplying all possible combinations of the expression of both interacting molecules between two given cell types.
+This package provides a tool to infer cell-cell communnication using a scRNAseq dataset. This repository allows to replicate the analysis found in Brunner et al. (2024). The functions calculate communication scores for any set of ligand-receptor pairs (e.g. CellChat Database) based on expression product. The L*R expression product method allows to obtain a continuous value by multiplying all possible combinations of the expression of both interacting molecules between two given cell types.
 
 <p align="center">
   <img width="1100"  src="TanyCom.png">
@@ -26,7 +26,7 @@ library(ExPCom)
   <li><b>Calculating CCC in a dataset with a single condition</b></li>
 </ul>
 
-Combined scores can be calculated in a single condition using the ComScores() function. The following arguments are required. (1) A SeuratObject: a sample dataset can be download from this github repository. The dataset is a downsample of the Brunner et al. (2024) paper. (2) The name of the metadata column containing the idents. (3) A database with ligand and receptor pairs. The database database.csv can also be found in the repository. Any custom database can be used as long as it is a dataframe with the following format: (4) a threshold, the minimum percentage of cells expressing the cells in source and target populations. Default is set to 0.
+Combined scores can be calculated in a single condition using the ComScores() function. The following arguments are required. (1) A SeuratObject: a sample dataset can be loaded this github repository. The dataset is a downsample of the Brunner et al. (2024) paper. (2) The name of the metadata column containing the idents. (3) A database with ligand and receptor pairs. The cellchat database is available in the repository. Any custom database can be used as long as it is a dataframe with the following format: (4) a threshold, the minimum percentage of cells expressing the cells in source and target populations. Default is set to 0.
 
 <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
   <tr>
@@ -52,8 +52,9 @@ Combined scores can be calculated in a single condition using the ComScores() fu
 </table>
 
 ```
-database <- readRDS("CellChatDB.rds")
-Seurat <- readRDS("TanSeurat.rds")
+
+data("LRPairs_CellChat_db")
+data("TanSeurat")
 
 ComScores <- ComScores(Seurat, idents = "cell_type", database = database, threshold = 0)
 
