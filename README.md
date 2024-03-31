@@ -51,28 +51,46 @@ Combined scores can be calculated in a single condition using the ComScores() fu
   </tr>
 </table>
 
+```
+database <- readRDS("CellChatDB.rds")
+Seurat <- readRDS("TanSeurat.rds")
+
+ComScores <- ComScores(Seurat, idents = "cell_type", database = database, threshold = 0)
+
+```
+
+
 The ComScores() function returns a dataframe cotainning all possible cell-cell communication scores (e.g. tanycyte-neurons). 
-```
-database = path_to_database
 
-CCC <- ComScores(seurat_object,  idents= levels(seurat_object), database)
-
-```
 <ul>
   <li><b>Calculating CCC in a dataset with several conditions</b></li>
 </ul>
 
-By using an integrated seurat object containing two or more conditions, we can calculate communication scores for each condition and infer the dynamics of cell-cell communication using the DifComScores() function.
+By using an integrated seurat object containing two or more conditions, differential communication analysis can be performed by calculating communication scores for each condition and infer the dynamics of cell-cell communication using the CondComScores() and DifComScores() functions.
 
-The DifComScores() function requires to define the name of the seurat_object meta.data column containing the conditions and cell types. As bellow, the database and the name of the idents to be included can be reduced if required. 
+The CondComScores() function simply calculates communication scores as the ComScores() function but taking into account conditions. The following arguments are required. (1) A SeuratObject (2) The name of the metadata column containing the idents. (3) The name of the metadata column containing the conditions. (4) A database with ligand and receptor pairs. (5) a threshold, the minimum percentage of cells expressing the cells in source and target populations. Default is set to 0.
 
 ```
-conditions = "condition"
-cell_type = "cell_type"
-database = path_to_database
+database <- readRDS("CellChatDB.rds")
+Seurat <- readRDS("TanSeurat.rds")
 
-CCC <- DifComScores(seurat_object, conditions= conditions, cell_type = cell_type)
+CondComScores <- CondComScores(Seurat, idents = "cell_type", condition = "orig.ident",database = database, threshold = 0)
+
 ```
+  
+The DifComScores() perfom a contrast between conditions using ANOVA and Tukey posthoc. The following arguments are required. (1) A SeuratObject (2) The name of the metadata column containing the idents. (3) The name of the metadata column containing the conditions. (4) The output of the CondComScores function, (5) a vector, order of the conditions to be compared for the contrast. 
+
+```
+
+DifComScores <- DifComScores(Seurat, idents = "cell_type", CondComScores = CondComScores, condition = "orig.ident",order = c("fed_int","fast12_int","fast24_int") )
+
+```
+
+Notes:
+1)  Downstream analysis requires to correct p values for multiple comparisons. 
+2)  The function requires to be adapted for parallelization for large datasets 
+
+
 
 
 
