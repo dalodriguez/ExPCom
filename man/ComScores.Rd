@@ -15,7 +15,7 @@ ComScores(
 \item{Seurat}{a Seurat object}
 \item{idents}{the name of the Seurat column metadata that contains the idents for which the communication will be calculated.}
 \item{database}{a dataframe with two columns containing ligand and receptors, default is the cellchat database.}
-\item{database}{minimum percentage of cells expressing the cells in source and target populations. Default is set to 0}
+\item{threshold}{minimum percentage of cells expressing the cells in source and target populations. Default is set to 0}
 }
 \value{
 A dataframe including communication scores for each LR pair and interaction
