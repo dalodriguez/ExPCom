@@ -147,8 +147,8 @@ CondComScores <- function(Seurat, idents = "cell_type", condition = "orig.ident"
       for (ids in 1:length(levels(Seurat))){
         message(paste0('...Calculating LRs expression in ',levels(Seurat)[ids], ": ", ids,' over ',length(levels(Seurat))))
         Mtx = Matrix[[t]]
-        target <- which(Seurat@meta.data[colnames(Mtx),idx] ==levels(Seurat)[ids])  ### <---------------- THE ERROR IS HERE !!!!!!!!!!
-        others <- which(Seurat@meta.data[colnames(Mtx),idx] !=levels(Seurat)[ids])  ### <---------------- THE ERROR IS HERE !!!!!!!!!!
+        target <- which(Seurat@meta.data[colnames(Mtx),idx] ==levels(Seurat)[ids])  ###  !
+        others <- which(Seurat@meta.data[colnames(Mtx),idx] !=levels(Seurat)[ids])  ###  !
         values <- apply(Mtx, 1, function(rows){
           # Calculating the proportion of cells expressing the cells in the target population against the other populations:
           count_average <- sum(rows[target])/length(others)
