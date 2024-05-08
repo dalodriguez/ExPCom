@@ -118,6 +118,11 @@ M. Brunner&#185;, D. Lopez-Rodriguez&#185;, A. Messina, B. Thorens, F Santoni&#1
 https://www.biorxiv.org/content/10.1101/2023.07.06.547914v1
 
 
+## License
+This project is covered under the Creative Commons Zero v1.0 Universal Licnse
+
+
+
 
 
 
