@@ -7,7 +7,9 @@ This repository provides a tool to infer cell-cell communnication using a scRNAs
 </p>
 
 
-## Installation 
+## Installation & System Requirements
+ExPCom is supported in Windows, MAC OS and Linux and requires only a standard computer with enough RAM to support the in-memory operations.
+
 ExPCom requires to have installed the package devtools, Seurat, stringr, reshape2 & multcomp. 
 ```
 if (!requireNamespace("BiocManager", quietly = TRUE))
