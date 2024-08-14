@@ -111,8 +111,6 @@ The results the DifComScores() function can be used to evaluate the differences 
 Please use github issue tracker to report coding related issues or contact me directly, https://dlopez-rodriguez.ch/Contact/
 
 ## How to cite?
-M. Brunner, D. Lopez-Rodriguez, A. Messina, B. Thorens, F Santoni&#178;, F. Langlet&#178;. Fasting induces metabolic switches and spatial redistributions of lipid processing and neuronal interactions in tanycytes. Volume 15, article number 6604, (2024). 
-
 Brunner, M.&#185;, Lopez-Rodriguez, D.&#185;, Estrada-Meza, J. et al. Fasting induces metabolic switches and spatial redistributions of lipid processing and neuronal interactions in tanycytes. Nat Commun 15, 6604 (2024). https://doi.org/10.1038/s41467-024-50913-w
 
 &#185; Co-First Author
